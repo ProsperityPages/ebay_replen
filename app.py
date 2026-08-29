@@ -155,10 +155,7 @@ with tab_feed:
 
                         # Action Buttons
                         btn_col1, btn_col2, btn_col3 = st.columns(3)
-                        import urllib.parsesearch_url = f"https://www.ebay.com/sch/i.html?_nkw={urllib.parse.quote_plus(replen['title'])}"fallback_link = item.get("itemWebUrl", search_url)
-# Fix for mock mode defaulting to the homepage
-if fallback_link == "https://www.ebay.com":
-    fallback_link = search_url
+
 
 btn1.link_button("🛒 View eBay", fallback_link, use_container_width=True)
                         btn_col1.link_button("🛒 View eBay", item.get("itemWebUrl", "https://www.ebay.com"), use_container_width=True)
