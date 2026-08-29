@@ -15,6 +15,7 @@ st.set_page_config(
 
 DATABASE_FILE = "replens_db.json"
 
+EBAY_OAUTH_TOKEN = "v^1.1#i^1#f^0#r^0#p^1#I^3#t^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"
 # --- PERSISTENCE HELPERS ---
 def load_replens():
     if os.path.exists(DATABASE_FILE):
@@ -72,7 +73,8 @@ def send_push_alert(topic, title, price, target, link):
 
 # --- SIDEBAR CONFIGURATION ---
 st.sidebar.title("⚙️ Sourcing Engine")
-ebay_token = st.sidebar.text_input("eBay OAuth Token", type="password", placeholder="Bearer token...")
+# NEW:
+ebay_token = st.sidebar.text_input("eBay OAuth Token", value=EBAY_OAUTH_TOKEN, type="password")
 ntfy_topic = st.sidebar.text_input("iOS Push Topic (ntfy.sh)", value="my-replen-alerts-2026")
 default_fee_pct = st.sidebar.slider("Estimated Amazon / FBA Fee (%)", 10, 25, 15)
 
